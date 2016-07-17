@@ -1,15 +1,223 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6221" systemVersion="13E28" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Confirmar-->
+        <scene sceneID="L84-Uy-An7">
+            <objects>
+                <controller identifier="confirmationScreen" title="Confirmar" id="S33-X6-72p" customClass="confirmationController" customModule="watchPizza_WatchKit_Extension">
+                    <items>
+                        <label width="136" height="100.5" alignment="left" text="Pedido" textAlignment="justified" numberOfLines="5" id="hQ0-mL-z1f"/>
+                        <group width="1" alignment="left" id="yKE-kj-aor">
+                            <items>
+                                <button width="66" alignment="left" title="Pedir!" id="ijZ-75-huY">
+                                    <connections>
+                                        <action selector="onOrder" destination="S33-X6-72p" id="wWM-L4-C5O"/>
+                                        <segue destination="AgC-eL-Hgc" kind="push" identifier="fromOrder" id="I6u-Nz-H0f"/>
+                                    </connections>
+                                </button>
+                                <button width="64" alignment="left" title="Volver!" id="1mU-qr-jjZ">
+                                    <connections>
+                                        <action selector="onDismiss" destination="S33-X6-72p" id="eD9-4B-j3n"/>
+                                        <segue destination="AgC-eL-Hgc" kind="push" identifier="fromDismiss" id="ql9-hq-z32"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="currentOrder" destination="hQ0-mL-z1f" id="3hs-YO-MvQ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="300" y="-147"/>
+        </scene>
+        <!--¡PIZZAS!-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="mainScreen" title="¡PIZZAS!" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watchPizza_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="1" alignment="left" id="PKi-ft-mMU">
+                            <items>
+                                <label width="105" alignment="left" text="Total pedidos:" id="vSC-ti-pNQ"/>
+                                <label width="24.5" alignment="left" text="#" textAlignment="right" id="2dr-bg-lLZ"/>
+                            </items>
+                        </group>
+                        <group width="136" height="38.5" alignment="left" id="fBj-gN-a0i">
+                            <items>
+                                <button width="70" alignment="left" title="Tamaño" id="dwI-uO-Gfb">
+                                    <connections>
+                                        <action selector="onSize" destination="AgC-eL-Hgc" id="QbV-h9-ZUh"/>
+                                        <segue destination="Npt-rF-HKN" kind="push" identifier="toSize" id="gNV-Ib-A2w"/>
+                                    </connections>
+                                </button>
+                                <button width="70" alignment="left" title="Masa" id="1cN-Ns-3LT" userLabel="Masa">
+                                    <connections>
+                                        <action selector="onMass" destination="AgC-eL-Hgc" id="tD8-Am-8ZT"/>
+                                        <segue destination="vcm-Ai-bc0" kind="push" identifier="toMass" id="DTY-jQ-Qhu"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="uPY-Zt-rPz">
+                            <items>
+                                <button width="70" alignment="left" title="Queso" id="cA4-xR-QzI" userLabel="Queso">
+                                    <connections>
+                                        <action selector="onCheese" destination="AgC-eL-Hgc" id="oFQ-Ad-Uao"/>
+                                        <segue destination="bgr-GF-JYG" kind="push" identifier="toCheese" id="I1l-gZ-8xL"/>
+                                    </connections>
+                                </button>
+                                <button width="70" alignment="left" title="Extras" id="ZZY-Z7-OzR" userLabel="Extras">
+                                    <connections>
+                                        <action selector="onExtras" destination="AgC-eL-Hgc" id="9KU-JY-sWl"/>
+                                        <segue destination="5py-K1-1Mj" kind="push" identifier="toExtras" id="QFl-TJ-8Ja"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <button width="1" alignment="left" title="Confirmar" id="NUM-St-qM9">
+                            <connections>
+                                <action selector="onConfirm" destination="AgC-eL-Hgc" id="ZQs-5U-oBI"/>
+                                <segue destination="S33-X6-72p" kind="push" identifier="toOrder" id="Nm0-vk-8P9"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="onCheeseLabel" destination="cA4-xR-QzI" id="9Jw-qr-4Xe"/>
+                        <outlet property="onConfirmLabel" destination="NUM-St-qM9" id="jKd-IY-xO1"/>
+                        <outlet property="onExtrasLabel" destination="ZZY-Z7-OzR" id="Shi-Yg-vuy"/>
+                        <outlet property="onMassLabel" destination="1cN-Ns-3LT" id="D1I-th-mqB"/>
+                        <outlet property="onSizeLabel" destination="dwI-uO-Gfb" id="nl8-P1-y0f"/>
+                        <outlet property="ordersNumber" destination="2dr-bg-lLZ" id="z8M-Rn-uFh"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="324" y="397"/>
+        </scene>
+        <!--Tamaño-->
+        <scene sceneID="dHL-cU-nfH">
+            <objects>
+                <controller identifier="sizeSelection" title="Tamaño" id="Npt-rF-HKN" customClass="sizeSelectionController" customModule="watchPizza_WatchKit_Extension">
+                    <items>
+                        <picker height="100" alignment="left" focusStyle="sequence" id="0mV-Nr-egf">
+                            <connections>
+                                <action selector="sizePickerSelected:" destination="Npt-rF-HKN" id="LCE-zs-KNK"/>
+                            </connections>
+                        </picker>
+                        <button width="1" alignment="left" title="Select!" id="xv5-1k-MCT">
+                            <connections>
+                                <action selector="onSizeSelected" destination="Npt-rF-HKN" id="NS4-EY-g7D"/>
+                                <segue destination="AgC-eL-Hgc" kind="push" identifier="fromSize" id="bD5-Oa-Iaj"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="sizePicker" destination="0mV-Nr-egf" id="IKy-ZP-Fib"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="26" y="799"/>
+        </scene>
+        <!--Masa-->
+        <scene sceneID="E6e-gp-Yc4">
+            <objects>
+                <controller identifier="massSelection" title="Masa" id="vcm-Ai-bc0" customClass="massSelectionController" customModule="watchPizza_WatchKit_Extension">
+                    <items>
+                        <picker height="100" alignment="left" focusStyle="sequence" id="WwK-hh-Ivy">
+                            <connections>
+                                <action selector="massPickerSelected:" destination="vcm-Ai-bc0" id="WDs-KM-Vta"/>
+                            </connections>
+                        </picker>
+                        <button width="1" alignment="left" title="Select!" id="7Wi-mp-z6r">
+                            <connections>
+                                <action selector="onMassSelected" destination="vcm-Ai-bc0" id="1BA-bQ-eXq"/>
+                                <segue destination="AgC-eL-Hgc" kind="push" identifier="fromMass" id="Vc2-Vn-iL7"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="massPicker" destination="WwK-hh-Ivy" id="0EW-Xd-eCt"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="324" y="886"/>
+        </scene>
+        <!--Queso-->
+        <scene sceneID="WDy-WS-HGz">
+            <objects>
+                <controller identifier="cheeseSelection" title="Queso" id="bgr-GF-JYG" customClass="cheeseSelectionController" customModule="watchPizza_WatchKit_Extension">
+                    <items>
+                        <picker height="100" alignment="left" focusStyle="sequence" id="52h-XH-ihk">
+                            <connections>
+                                <action selector="cheesePickerSelected:" destination="bgr-GF-JYG" id="n0n-8K-r2S"/>
+                            </connections>
+                        </picker>
+                        <button width="1" alignment="left" title="Select!" id="l9X-qD-k2o">
+                            <connections>
+                                <action selector="onCheeseSelected" destination="bgr-GF-JYG" id="fB1-xa-hzJ"/>
+                                <segue destination="AgC-eL-Hgc" kind="push" identifier="fromCheese" id="uDG-MH-ewh"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="cheesePicker" destination="52h-XH-ihk" id="w46-Ca-bFj"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="666" y="799"/>
+        </scene>
+        <!--Extras-->
+        <scene sceneID="gmZ-2k-tXp">
+            <objects>
+                <controller identifier="extrasSelection" title="Extras" id="5py-K1-1Mj" customClass="extrasSelectionController" customModule="watchPizza_WatchKit_Extension">
+                    <items>
+                        <group width="1" alignment="left" id="bXi-7S-Hm4">
+                            <items>
+                                <label alignment="left" text="Current Extras: " id="720-Se-hMq"/>
+                                <label alignment="left" text="#" id="x8O-uK-stO"/>
+                            </items>
+                        </group>
+                        <picker height="81" alignment="left" focusStyle="sequence" id="Iiq-my-qvm">
+                            <connections>
+                                <action selector="extrasPickerSelected:" destination="5py-K1-1Mj" id="sFv-Iv-4Uh"/>
+                            </connections>
+                        </picker>
+                        <group width="1" alignment="left" id="Zd6-mo-Jhn">
+                            <items>
+                                <button width="48" alignment="left" title="Clear" id="XIb-Pg-JQp">
+                                    <connections>
+                                        <action selector="onClear" destination="5py-K1-1Mj" id="Gdu-SH-u46"/>
+                                    </connections>
+                                </button>
+                                <button width="44" alignment="left" title="Add" id="0r2-84-1Mf">
+                                    <connections>
+                                        <action selector="onAdd" destination="5py-K1-1Mj" id="ixc-Cz-lQ4"/>
+                                    </connections>
+                                </button>
+                                <button width="39" alignment="left" title="OK" id="roB-4l-f5I">
+                                    <connections>
+                                        <action selector="onEnough" destination="5py-K1-1Mj" id="JAE-Ez-Xuk"/>
+                                        <segue destination="AgC-eL-Hgc" kind="push" identifier="fromExtras" id="Qcf-dM-vew"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="currentExtras" destination="x8O-uK-stO" id="Z3F-Kh-nFi"/>
+                        <outlet property="extrasPicker" destination="Iiq-my-qvm" id="VVF-wd-OSJ"/>
+                        <outlet property="onAddLabel" destination="0r2-84-1Mf" id="KRu-D5-1v1"/>
+                        <outlet property="onEnoughLabel" destination="roB-4l-f5I" id="qPO-nM-90s"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="788" y="416"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qcf-dM-vew"/>
+    </inferredMetricsTieBreakers>
 </document>
