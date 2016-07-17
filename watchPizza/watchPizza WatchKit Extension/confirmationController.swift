@@ -17,21 +17,29 @@ class confirmationController: WKInterfaceController {
 	@IBAction func onOrder() {
 		ordersLog.append(newPizza)
 		newPizza = Pizza()
+		popController()
 	}
 	
 	@IBAction func onDismiss() {
+		popController()
 	}
 	
 	
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         // Configure interface objects here.
-		let order =	"Tamaño: " + newPizza.size + "\n" +
-					"Masa: " + newPizza.mass + "\n" +
-					"Tipo de queso: " + newPizza.cheese + "\n" +
-					"Extras: " + String(newPizza.extras)
+		var order =	"Pizza " + newPizza.size + ", masa " +
+			newPizza.mass + ", " + newPizza.cheese + ", "
+		for i in 0..<newPizza.extras.count{
+			if i == 0{
+				order = order + newPizza.extras[i]
+			} else if i == newPizza.extras.count-1{
+				order = order + " y " + newPizza.extras[i]
+			} else{
+				order = order + ", " + newPizza.extras[i]
+			}
+		}
 		currentOrder.setText(order)
-		
     }
 
     override func willActivate() {

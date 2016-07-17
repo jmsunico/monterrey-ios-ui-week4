@@ -19,6 +19,7 @@ class cheeseSelectionController: WKInterfaceController {
 		
 	}
 	@IBAction func onCheeseSelected() {
+		popController()
 	}
 	
 	override func awakeWithContext(context: AnyObject?) {
@@ -33,7 +34,7 @@ class cheeseSelectionController: WKInterfaceController {
 			let pickerItem = WKPickerItem()
 			pickerItem.caption = $0.0
 			pickerItem.title = $0.1
-			newPizza.cheese = pickerItem.title!
+			newPizza.cheese = Cheeses[0]
 			return pickerItem
 		}
 		cheesePicker.setItems(pickerItems)

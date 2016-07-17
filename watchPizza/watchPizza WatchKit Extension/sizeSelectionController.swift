@@ -18,6 +18,7 @@ class sizeSelectionController: WKInterfaceController {
 		newPizza.size = Sizes[value]
 	}
 	@IBAction func onSizeSelected() {
+		popController()
 	}
 	
     override func awakeWithContext(context: AnyObject?) {
@@ -32,7 +33,7 @@ class sizeSelectionController: WKInterfaceController {
 			let pickerItem = WKPickerItem()
 			pickerItem.caption = $0.0
 			pickerItem.title = $0.1
-			newPizza.size = pickerItem.title!
+			newPizza.size = Sizes[0]
 			return pickerItem
 		}
 		self.sizePicker.setItems(pickerItems)

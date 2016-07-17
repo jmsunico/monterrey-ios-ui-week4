@@ -9,6 +9,33 @@
 import WatchKit
 import Foundation
 
+public let Sizes =	["pequeña", "normal", "grande"]
+public let Masses =	["fina", "gruesa", "crujiente"]
+public let Cheeses = ["parmesano", "mozarella", "cheddar", "sin queso"]
+public let Extras =	["anchoas", "atún", "champiñón", "jamón"
+	, "pepperoni", "pimiento", "piña"
+	, "Pollo", "Salmón", "Tomate"]
+
+public struct Pizza{
+	var size: String
+	var mass: String
+	var cheese: String
+	var extras: [String]
+	init(){
+		self.size = ""
+		self.mass = ""
+		self.cheese = ""
+		self.extras = []
+	}
+}
+
+public class sharedValues: NSObject {
+	var newPizza : Pizza
+	init(newPizza: Pizza){
+		self.newPizza = newPizza
+	}
+}
+
 public var newPizza = Pizza()
 public var ordersLog = [Pizza]()
 
@@ -45,6 +72,13 @@ class InterfaceController: WKInterfaceController {
         super.awakeWithContext(context)
 		// Configure interface objects here.
 
+		
+    }
+	
+	
+    override func willActivate() {
+        // This method is called when watch view controller is about to be visible to user
+        super.willActivate()
 		self.ordersNumber.setText(String(ordersLog.count))
 		
 		if (newPizza.size != "" && newPizza.cheese != "" &&
@@ -83,14 +117,6 @@ class InterfaceController: WKInterfaceController {
 			self.onExtrasLabel.setBackgroundColor(GREY)
 		}
 		
-		
-    }
-	
-	
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
-		
     }
 
     override func didDeactivate() {
@@ -99,29 +125,3 @@ class InterfaceController: WKInterfaceController {
     }
 }
 
-public let Sizes =	["pequeña", "normal", "grande"]
-public let Masses =	["fina", "gruesa", "crujiente"]
-public let Cheeses = ["parmesano", "mozarella", "cheddar", "sin queso"]
-public let Extras =	["anchoas", "atún", "champiñón", "jamón"
-					, "pepperoni", "pimiento", "piña"
-					, "Pollo", "Salmón", "Tomate"]
-
-public struct Pizza{
-	var size: String
-	var mass: String
-	var cheese: String
-	var extras: [String]
-	init(){
-		self.size = ""
-		self.mass = ""
-		self.cheese = ""
-		self.extras = []
-	}
-}
-
-public class sharedValues: NSObject {
-	var newPizza : Pizza
-	init(newPizza: Pizza){
-		self.newPizza = newPizza
-	}
-}

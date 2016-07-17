@@ -10,30 +10,30 @@
             <objects>
                 <controller identifier="confirmationScreen" title="Confirmar" id="S33-X6-72p" customClass="confirmationController" customModule="watchPizza_WatchKit_Extension">
                     <items>
-                        <label width="136" height="100.5" alignment="left" text="Pedido" textAlignment="justified" numberOfLines="5" id="hQ0-mL-z1f"/>
+                        <label width="136" height="100.5" alignment="left" text="Pedido" textAlignment="justified" numberOfLines="6" id="hQ0-mL-z1f">
+                            <fontDescription key="font" type="system" pointSize="14"/>
+                        </label>
                         <group width="1" alignment="left" id="yKE-kj-aor">
                             <items>
                                 <button width="66" alignment="left" title="Pedir!" id="ijZ-75-huY">
                                     <connections>
-                                        <action selector="onOrder" destination="S33-X6-72p" id="wWM-L4-C5O"/>
-                                        <segue destination="AgC-eL-Hgc" kind="push" identifier="fromOrder" id="I6u-Nz-H0f"/>
+                                        <action selector="onOrder" destination="S33-X6-72p" id="eAd-3d-sMa"/>
                                     </connections>
                                 </button>
                                 <button width="64" alignment="left" title="Volver!" id="1mU-qr-jjZ">
                                     <connections>
-                                        <action selector="onDismiss" destination="S33-X6-72p" id="eD9-4B-j3n"/>
-                                        <segue destination="AgC-eL-Hgc" kind="push" identifier="fromDismiss" id="ql9-hq-z32"/>
+                                        <action selector="onDismiss" destination="S33-X6-72p" id="9BZ-cN-IzW"/>
                                     </connections>
                                 </button>
                             </items>
                         </group>
                     </items>
                     <connections>
-                        <outlet property="currentOrder" destination="hQ0-mL-z1f" id="3hs-YO-MvQ"/>
+                        <outlet property="currentOrder" destination="hQ0-mL-z1f" id="nuC-hm-Gtz"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="300" y="-147"/>
+            <point key="canvasLocation" x="629" y="154"/>
         </scene>
         <!--¡PIZZAS!-->
         <scene sceneID="aou-V4-d1y">
@@ -110,7 +110,6 @@
                         <button width="1" alignment="left" title="Select!" id="xv5-1k-MCT">
                             <connections>
                                 <action selector="onSizeSelected" destination="Npt-rF-HKN" id="NS4-EY-g7D"/>
-                                <segue destination="AgC-eL-Hgc" kind="push" identifier="fromSize" id="bD5-Oa-Iaj"/>
                             </connections>
                         </button>
                     </items>
@@ -119,7 +118,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="26" y="799"/>
+            <point key="canvasLocation" x="118" y="799"/>
         </scene>
         <!--Masa-->
         <scene sceneID="E6e-gp-Yc4">
@@ -134,7 +133,6 @@
                         <button width="1" alignment="left" title="Select!" id="7Wi-mp-z6r">
                             <connections>
                                 <action selector="onMassSelected" destination="vcm-Ai-bc0" id="1BA-bQ-eXq"/>
-                                <segue destination="AgC-eL-Hgc" kind="push" identifier="fromMass" id="Vc2-Vn-iL7"/>
                             </connections>
                         </button>
                     </items>
@@ -143,7 +141,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="324" y="886"/>
+            <point key="canvasLocation" x="324" y="799"/>
         </scene>
         <!--Queso-->
         <scene sceneID="WDy-WS-HGz">
@@ -158,7 +156,6 @@
                         <button width="1" alignment="left" title="Select!" id="l9X-qD-k2o">
                             <connections>
                                 <action selector="onCheeseSelected" destination="bgr-GF-JYG" id="fB1-xa-hzJ"/>
-                                <segue destination="AgC-eL-Hgc" kind="push" identifier="fromCheese" id="uDG-MH-ewh"/>
                             </connections>
                         </button>
                     </items>
@@ -167,7 +164,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="666" y="799"/>
+            <point key="canvasLocation" x="527" y="799"/>
         </scene>
         <!--Extras-->
         <scene sceneID="gmZ-2k-tXp">
@@ -200,7 +197,6 @@
                                 <button width="39" alignment="left" title="OK" id="roB-4l-f5I">
                                     <connections>
                                         <action selector="onEnough" destination="5py-K1-1Mj" id="JAE-Ez-Xuk"/>
-                                        <segue destination="AgC-eL-Hgc" kind="push" identifier="fromExtras" id="Qcf-dM-vew"/>
                                     </connections>
                                 </button>
                             </items>
@@ -214,10 +210,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="788" y="416"/>
+            <point key="canvasLocation" x="629" y="423"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Qcf-dM-vew"/>
-    </inferredMetricsTieBreakers>
 </document>

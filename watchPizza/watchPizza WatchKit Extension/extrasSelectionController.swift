@@ -24,6 +24,8 @@ class extrasSelectionController: WKInterfaceController {
 		self.extrasPicker.setSelectedItemIndex(0)
 		self.extrasPickerSelected(0)
 		self.onAddLabel.setEnabled(true)
+		self.onEnoughLabel.setEnabled(false)
+
 	}
 	
 	@IBAction func extrasPickerSelected(value: Int) {
@@ -32,6 +34,7 @@ class extrasSelectionController: WKInterfaceController {
 	
 	@IBOutlet var onEnoughLabel: WKInterfaceButton!
 	@IBAction func onEnough() {
+		popController()
 	}
 	
 	@IBOutlet var onAddLabel: WKInterfaceButton!

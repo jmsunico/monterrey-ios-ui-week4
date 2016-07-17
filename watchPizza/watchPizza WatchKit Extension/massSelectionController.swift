@@ -19,13 +19,8 @@ class massSelectionController: WKInterfaceController {
 		
 	}
 	@IBAction func onMassSelected() {
+		popController()
 	}
-	
-	
-	
-	
-	
-	
 	
 	override func awakeWithContext(context: AnyObject?) {
 		super.awakeWithContext(context)
@@ -39,7 +34,7 @@ class massSelectionController: WKInterfaceController {
 			let pickerItem = WKPickerItem()
 			pickerItem.caption = $0.0
 			pickerItem.title = $0.1
-			newPizza.mass = pickerItem.title!
+			newPizza.mass = Masses[0]
 			return pickerItem
 		}
 		massPicker.setItems(pickerItems)
