@@ -82,7 +82,7 @@ class InterfaceController: WKInterfaceController {
 		self.ordersNumber.setText(String(ordersLog.count))
 		
 		if (newPizza.size != "" && newPizza.cheese != "" &&
-			newPizza.mass != "" && newPizza.extras.count > 2){
+			newPizza.mass != "" && newPizza.extras.count > 0){
 			onConfirmLabel.setEnabled(true)
 		}
 		else{
@@ -110,7 +110,7 @@ class InterfaceController: WKInterfaceController {
 			self.onCheeseLabel.setBackgroundColor(GREY)
 		}
 		
-		if newPizza.extras.count > 2 {
+		if newPizza.extras.count > 0 {
 			self.onExtrasLabel.setBackgroundColor(BLACK)
 		}
 		else{

@@ -42,7 +42,7 @@ class extrasSelectionController: WKInterfaceController {
 		if self.tempExtra != "" {
 			newPizza.extras.append(tempExtra)
 			self.currentExtras.setText(String(newPizza.extras.count))
-			if newPizza.extras.count > 2 {
+			if newPizza.extras.count > 0 {
 				self.onEnoughLabel.setEnabled(true)
 			} else{
 				self.onEnoughLabel.setEnabled(false)
@@ -78,7 +78,7 @@ class extrasSelectionController: WKInterfaceController {
 		extrasPicker.setItems(pickerItems)
 		
 		self.currentExtras.setText(String(newPizza.extras.count))
-		if newPizza.extras.count > 2 {
+		if newPizza.extras.count > 0 {
 			self.onEnoughLabel.setEnabled(true)
 		} else{
 			self.onEnoughLabel.setEnabled(false)
